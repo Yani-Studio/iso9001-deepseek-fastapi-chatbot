@@ -18,8 +18,11 @@
   </p>
   
   <!-- Demo Video -->
-  <video src="06_visualizations/streamlit_demo.mp4" width="80%" controls="controls" autoplay="autoplay" muted="muted" loop="loop"></video>
   <br/><br/>
+
+https://github.com/user-attachments/assets/0512f394-6081-4880-92ce-6fcbc6d215f0
+
+  <br/>
 </div>
 
 
