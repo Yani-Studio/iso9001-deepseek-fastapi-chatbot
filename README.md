@@ -16,6 +16,10 @@
   <p>
     <b>ISO 9001:2015 규격에 완벽히 대응하는 프로덕션 레벨 RAG(검색 증강 생성) 파이프라인 및 엔터프라이즈 AI 챗봇 벤치마킹 프로젝트입니다.</b>
   </p>
+
+---
+> ⚠️ Copyright Notice Copyright (c) 2026 Kang Gyu Min. All rights reserved.
+---
   
   <!-- Demo Video -->
   <br/><br/>
