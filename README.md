@@ -16,7 +16,10 @@
   <p>
     <b>ISO 9001:2015 규격에 완벽히 대응하는 프로덕션 레벨 RAG(검색 증강 생성) 파이프라인 및 엔터프라이즈 AI 챗봇 벤치마킹 프로젝트입니다.</b>
   </p>
-  <br/>
+  
+  <!-- Demo Video -->
+  <video src="06_visualizations/streamlit_demo.mp4" width="80%" controls="controls" autoplay="autoplay" muted="muted" loop="loop"></video>
+  <br/><br/>
 </div>
 
 
@@ -148,3 +151,4 @@ streamlit run mac_chat_app.py
   * [Streamlit](https://streamlit.io/) - 직관적인 Python 기반 챗봇 프론트엔드 UI 구축
   * [ChromaDB](https://docs.trychroma.com/) - 효율적인 로컬 벡터 임베딩 저장소
   * [Mermaid JS](https://mermaid.js.org/) - 시스템 아키텍처 다이어그램 시각화
+
