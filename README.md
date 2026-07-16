@@ -19,16 +19,7 @@
   <br/>
 </div>
 
-## 📑 목차 (Table of Contents)
-- [📌 프로젝트 개요 (Overview)](#-프로젝트-개요-overview)
-- [🏗️ 시스템 아키텍처 분석 (Architecture)](#️-시스템-아키텍처-분석-architecture)
-- [📊 벤치마크 및 데이터셋 설계 (Benchmark & Dataset)](#-벤치마크-및-데이터셋-설계-benchmark--dataset)
-- [📈 종합 성능 지표 분석 (Performance Analysis)](#-종합-성능-지표-분석-performance-analysis)
-- [⚡ 추론 속도 및 효율성 검증 (Efficiency Validation)](#-추론-속도-및-효율성-검증-efficiency-validation)
-- [📉 환각 억제 및 파라미터 튜닝 (Hallucination Tuning)](#-환각-억제-및-파라미터-튜닝-hallucination-tuning)
-- [🚀 퀵 스타트 (Quick Start)](#-퀵-스타트-quick-start)
 
-<hr>
 
 ## 📌 프로젝트 개요 (Overview)
 
