@@ -1,3 +1,7 @@
+
+
+https://github.com/user-attachments/assets/cff593c2-69fa-4c49-bc0d-5d3b96b07c09
+
 <div align="center">
   <h1>🚀 ISO 9001 Expert Chatbot</h1>
   <p><em>Powered by DeepSeek, FastAPI, and ChromaDB</em></p>
@@ -20,7 +24,11 @@
   <!-- Demo Video -->
   <br/><br/>
 
-https://github.com/user-attachments/assets/0512f394-6081-4880-92ce-6fcbc6d215f0
+
+
+https://github.com/user-attachments/assets/c54d0a65-b04e-4fad-b8e8-c6e6cd179d88
+
+
 
   <br/>
 </div>
