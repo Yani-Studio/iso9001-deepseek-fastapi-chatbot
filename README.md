@@ -1,7 +1,3 @@
-
-
-https://github.com/user-attachments/assets/cff593c2-69fa-4c49-bc0d-5d3b96b07c09
-
 <div align="center">
   <h1>🚀 ISO 9001 Expert Chatbot</h1>
   <p><em>Powered by DeepSeek, FastAPI, and ChromaDB</em></p>
