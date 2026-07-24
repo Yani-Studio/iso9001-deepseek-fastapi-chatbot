@@ -27,7 +27,7 @@
    - Random Forest, Gradient Boosting, Extra Trees 등 15개 머신러닝 알고리즘의 예측 확률값을 Meta-Learner(LightGBM)로 통합 결합하여 예측 편향과 분산을 최적화한 ML 스태킹 기법입니다.
 3. **XAI SHAP (SHapley Additive exPlanations) Feature Attribution**:
    - 게임 이론 기반 협력 게임 가치를 활용하여 복잡한 머신러닝 모델의 개별 피처(예: `lead_time_material`)가 지연 예측에 미친 양/음의 수치적 영향력을 투명하게 해명합니다.
-4. **Counterfactual Risk Reduction Delta ($\Delta$) Simulation**:
+4. **Counterfactual Risk Reduction Delta (Δ) Simulation**:
    - "만약 공급업체를 Vendor Z로 변경하거나 발주 수량을 15% 조정한다면 지연 리스크가 얼마나 감소하는가?"를 가상 역사실(Counterfactual) 기법으로 탐색하여 리스크 감소율 Delta를 계산합니다.
 5. **SOP (Standard Operating Procedure) Compliance Audit Recall**:
    - 기업 내부 SAP 구매 승인 규정 및 전자결재 전결 기준 위반 사례를 자동 감지하고 수사/감사팀이 즉시 추적할 수 있도록 돕는 감사 리콜 엔진입니다.
@@ -46,7 +46,7 @@
 * **5대 서브시스템 아키텍처 분석**:
   1. **`1. SAP ERP SOURCE`**: SAP MM 모듈(구매요청 PR, 구매발주 PO) 및 FI/CO 모듈(자재입고 GR, 송장처리 AP)의 트랜잭션 데이터 원천 수집.
   2. **`2. DATA ETL PIPELINE`**: 239,620건의 Raw 이벤트 로그를 실시간 배치 인제스천하고, 시계열 이동평균(MA), 자재 리드타임, 공급사 과거 지연율 등 **73개 핵심 공정 피처**를 자동으로 추출 및 생성.
-  3. **`3. MACBOOK & STREAMLIT CLIENT TIER`**: 사용자가 웹 브라우저로 접속하는 Remote Web Client와 맥북 로컬 호스트(`app.py`) 간 양방향 통신(`<->`)을 수립하며, DGX Spark 서버와 SSH/REST 암호화 터널링 통신 수행.
+  3. **`3. MACBOOK & STREAMLIT CLIENT TIER`**: 사용자가 웹 브라우저로 접속하는 Remote Web Client와 맥북 로컬 호스트(`app.py`) 간 양방향 통신을 수립하며, DGX Spark 서버와 SSH/REST 암호화 터널링 통신 수행.
   4. **`4. DGX SPARK GPU & 3 ENGINES`**: Ollama 추론 루터를 통해 `qwen3.6:35b` LLM이 초당 74.50 토큰(TPS)으로 구동되며, 3대 처방 AI 모듈(XAI 원인분석, 리스크 시뮬레이터, SOP 감사엔진)과 양방향 툴 콜링(Tool Calling) 수행.
   5. **`5. ML ENGINE`**: 15개 알고리즘이 결합된 Meta_LightGBM 스태킹 ML 엔진이 F1-Score **0.8802**, Accuracy **92.53%**의 고성능 실시간 지연 예측 수치를 공급.
 
@@ -122,7 +122,7 @@
   * SHAP XAI 원인 설명 정확도: **96.78%**
   * DFG 공정 병목 구간 탐지 정밀도(Precision): **97.40%**
 * **Module 2 (Counterfactual Risk Simulator)**:
-  * 가상 대안 시뮬레이션을 통한 지연 리스크 감소율 Delta ($\Delta$): **-67.58%** (공급사를 Vendor Z로 교체 시 지연 발생 위험이 84.2%에서 16.62%로 급감)
+  * 가상 대안 시뮬레이션을 통한 지연 리스크 감소율 Delta (Δ): **-67.58%** (공급사를 Vendor Z로 교체 시 지연 발생 위험이 84.2%에서 16.62%로 급감)
 * **Module 3 (SOP Compliance Audit Engine)**:
   * SAP 전자결재 전결 규정(SOP-SEC-14 등) 위반 건 적발 감사 리콜률(Recall): **98.27%**
 
@@ -133,54 +133,61 @@
 
 #### 📝 심층 분석 및 세부 설명
 * **좌측 그래프 (Risk Reduction Delta Bar Chart)**:
-  * 기존 조달 시나리오의 지연 위험도(84.2%) 대비 Module 2 처방 시뮬레이션 적용 후 위험도(16.62%)의 획기적 하락(-67.58% p) 시각화.
+  * 기존 조달 시나리오의 지연 위험도(84.2%) 대비 Module 2 처방 시뮬레이션 적용 후 위험도(16.62%)의 획기적 하락(-67.58%p) 시각화.
 * **우측 그래프 (Audit Recall Gaussian Distribution)**:
   * 총 1,200건의 SOP 규정 위반 무작위 테스트 케이스 중 1,179건을 수사/감사팀이 즉시 추적 가능하도록 오차 없이 적발해낸 98.27% 리콜 정밀도를 가우시안 곡선으로 검증.
 
 ---
 
 ### 🖼️ [Asset 08] 경영진 보고용 실증 감사 검증 종합표
-![Asset 08 Executive Empirical Audit Table](visualization/images/08_executive_empirical_audit_verification_table.png)
+![Asset 08 Executive Audit Table](visualization/images/08_executive_empirical_audit_verification_table.png)
 
 #### 📝 심층 분석 및 세부 설명
 * **경영진(C-Level) 보고용 4대 실증 감사 지표 요약**:
   1. **Data Scale**: 239,620건의 이벤트 로그 데이터셋, 73개 전처리 피처
   2. **ML Stacking Accuracy**: F1-Score **0.8802**, Accuracy **92.53%** (Combo 23 Meta_LightGBM)
   3. **GPU Inference Speed**: DGX Spark `qwen3.6:35b` 기준 **74.50 TPS**
-  4. **Business ROI & ROI**: 납기 지연 리스크 **67.58% 절감**, SOP 규정 위반 적발 리콜률 **98.27%**
+  4. **Business ROI**: 납기 지연 리스크 **67.58% 절감**, SOP 규정 위반 적발 리콜률 **98.27%**
 
 ---
 
 ## 📂 4. 디렉터리 구조 (Directory Architecture)
 
 ```
-/Users/gyuminkang/Desktop/sap/
-├── 📄 README.md                                    # 본 가이드 문서
-├── 📄 .gitignore                                   # Git 무거운 파일 제외 설정
-├── 📄 requirements.txt                             # 파이썬 라이브러리 의존성
-├── 🚀 run_app.sh                                   # 원클릭 앱 실행 스크립트
+sap/
+├── README.md
+├── .gitignore
+├── requirements.txt
+├── run_app.sh
 │
-├── 📁 1. app/                                     # 🌐 Streamlit 웹 대시보드 UI
-│   ├── app.py                                      #   - 대시보드 및 LLM 챗봇 메인
-│   └── dashboard.py                                #   - 경영진 지표 커스텀 뷰
+├── app/                         # 🌐 Streamlit 웹 대시보드 UI
+│   ├── app.py
+│   └── dashboard.py
 │
-├── 📁 2. pipelines/                               # ⚙️ 데이터 파이프라인 & ML 스태킹 모듈
-│   ├── data_pipeline/                              #   - ETL 및 피처 엔지니어링
-│   ├── ensemble_search/                            #   - 50x50 그리드서치 탐색기
-│   └── scripts/                                    #   - ML 학습 실행 스크립트 모음
+├── pipelines/                   # ⚙️ 데이터 파이프라인 & ML 스태킹
+│   ├── data_pipeline/
+│   ├── ensemble_search/
+│   └── scripts/
 │
-├── 📁 3. llm_engine/                               # 💬 로컬 LLM 챗봇 & 3대 처방 엔진
-│   ├── chatbot/                                    #   - XAI, 시뮬레이터, 감사 엔지니어링
-│   └── llm_evaluation/                             #   - 5대 LLM 벤치마크 평가기
+├── llm_engine/                  # 💬 로컬 LLM 챗봇 & 3대 처방 엔진
+│   ├── chatbot/
+│   └── llm_evaluation/
 │
-├── 📁 4. models_config/                            # 📄 Ollama Modelfile & 환경 설정
-│   └── models/modelfiles/Modelfile.qwen3.6_35b    #   - GPU 가속 하이퍼파라미터
+├── models_config/               # 📄 Ollama Modelfile & 환경 설정
+│   └── models/modelfiles/
 │
-└── 📁 5. visualization/                           # 📓 마스터 주피터 노트북 & PNG 에셋 9종
-    ├── system_performance_visualization.ipynb      #   - 마스터 통합 시각화 노트북
-    └── images/                                     #   - 이미지 자산 폴더
+└── visualization/               # 📓 시각화 노트북 & 이미지 에셋
+    ├── system_performance_visualization.ipynb
+    ├── streamlit_prescriptive_ai_demo.mov
+    └── images/
         ├── 01_unified_enterprise_architecture_diagram.png
-        └── ...
+        ├── 02_sap_p2p_erd_entity_relationship_schema.png
+        ├── 03_shap_feature_attribution_and_dfg_bottleneck_chart.png
+        ├── 04_llm_5model_final_leaderboard_table.png
+        ├── 05_llm_5model_radar_chart_comparison.png
+        ├── 06_3module_prescriptive_benchmark_summary_table.png
+        ├── 07_3module_prescriptive_benchmark_charts.png
+        └── 08_executive_empirical_audit_verification_table.png
 ```
 
 ---
@@ -209,25 +216,23 @@ jupyter notebook system_performance_visualization.ipynb
 
 ## 📚 6. 참고 문헌 및 학술 인용 (References & Citations)
 
-본 프로젝트는 아래 학술 논문, 엔터프라이즈 산업 표준 및 오픈소스 연구 성과를 인용 및 준수하여 설계되었습니다:
-
 1. **Process Mining & Event Logs**:
    - van der Aalst, W. M. P. (2016). *Process Mining: Data Science in Action*. Springer. [DOI: 10.1007/978-3-662-49851-4]
    - IEEE Task Force on Process Mining. (2010). *eXtensible Event Stream (XES) Standard Definition*.
 
 2. **Explainable AI (XAI) & SHAP**:
-   - Lundberg, S. M., & Lee, S.-I. (2017). A Unified Approach to Interpreting Model Predictions. *Advances in Neural Information Processing Systems (NeurIPS 2017)*, 30, 4765–4774.
+   - Lundberg, S. M., & Lee, S.-I. (2017). A Unified Approach to Interpreting Model Predictions. *NeurIPS 2017*, 30, 4765–4774.
 
 3. **Machine Learning Stacking Ensemble**:
-   - Ke, G., Meng, Q., Finley, T., Wang, T., Chen, W., Ma, W., Ye, Q., & Liu, T.-Y. (2017). LightGBM: A Highly Efficient Gradient Boosting Decision Tree. *Advances in Neural Information Processing Systems (NeurIPS 2017)*, 30, 3146–3154.
+   - Ke, G., et al. (2017). LightGBM: A Highly Efficient Gradient Boosting Decision Tree. *NeurIPS 2017*, 30, 3146–3154.
    - Breiman, L. (1996). Stacked Regressions. *Machine Learning*, 24(1), 49–64.
 
 4. **Large Language Models & GPU Acceleration**:
-   - Yang, A., et al. (2024). Qwen2.5 Technical Report. *arXiv preprint arXiv:2409.12186*.
-   - Ollama Open-Source Large Language Model Inference Framework. (2024). *High-Performance GPU Pipeline Offloading*. https://github.com/ollama/ollama
+   - Yang, A., et al. (2024). Qwen2.5 Technical Report. *arXiv:2409.12186*.
+   - Ollama (2024). *High-Performance GPU Pipeline Offloading*. https://github.com/ollama/ollama
 
-5. **SAP Enterprise Resource Planning Architecture**:
-   - SAP SE. (2023). *SAP S/4HANA Materials Management (MM) and Financial Accounting (FI) Integration Guide*. SAP Documentation.
+5. **SAP ERP Architecture**:
+   - SAP SE. (2023). *SAP S/4HANA MM and FI Integration Guide*. SAP Documentation.
 
 
 
