@@ -43,7 +43,7 @@
 <br/>
 
 ### 🎥 [Asset 00] Streamlit Prescriptive AI Chatbot 실시간 구동 데모 영상
-![Streamlit Prescriptive AI Chatbot Real-Time Demo](visualization/streamlit_prescriptive_ai_demo.mov)
+[🎥 Streamlit Prescriptive AI Chatbot 실시간 구동 데모 영상 (streamlit_prescriptive_ai_demo.mov)](visualization/streamlit_prescriptive_ai_demo.mov)
 
 <br/>
 </div>
