@@ -36,28 +36,7 @@
 
 ---
 
-## 📊 3. 시각화 자료 및 데모 영상 정밀 설명 (Detailed Visual & Video Asset Walkthrough)
-
-<div align="center">
-<!-- Demo Video -->
-<br/>
-
-### 🎥 [Asset 00] Streamlit Prescriptive AI Chatbot 실시간 구동 데모 영상
-[🎥 Streamlit Prescriptive AI Chatbot 실시간 구동 데모 영상 (streamlit_prescriptive_ai_demo.mov)](visualization/streamlit_prescriptive_ai_demo.mov)
-
-<br/>
-</div>
-
-#### 📝 [Asset 00] 데모 영상 심층 분석 및 세부 설명
-* **설계 목적**: 실제 맥북 환경에서 구동되는 Streamlit 기반 프레스크립티브 AI 대시보드 및 DGX Spark GPU 가속 Ollama `qwen3.6:35b` LLM 챗봇의 실시간 대화형 처방 시연 과정을 녹화한 동영상 자료입니다.
-* **영상 주요 시연 파이프라인**:
-  1. **인터랙티브 대시보드 시동**: `run_app.sh` 구동 후 로컬 웹 포트(8501)에서 SAP P2P 실시간 지연 위험도 및 KPI 지표 시각화.
-  2. **사용자 자연어 질의 수신**: 구매 담당자가 "PO #4928 자재 조달 지연 원인 및 위험 감소 대안을 시뮬레이션해 줘" 질의 입력.
-  3. **Module 1 (XAI & DFG)**: SHAP 가치 기반 `lead_time_material` (+0.482) 원인 추적 및 `PO Creation ➔ Goods Receipt` (8.4일 병목) 탐지 결과 제시.
-  4. **Module 2 (Risk Simulator)**: 공급사를 Vendor Z로 교체 시 위험도가 84.2%에서 16.62%로 급감(-67.58% p)하는 What-If 시뮬레이션 출력.
-  5. **Module 3 (SOP Compliance Audit)**: 미승인 긴급 발주 건(SOP-SEC-14 위반) 자동 감지(98.27% Recall) 보고서 실시간 생성.
-
----
+## 📊 3. 시각화 자료 정밀 분석 및 세부 설명 (Detailed Visual Asset Walkthrough)
 
 ### 🖼️ [Asset 01] 엔드투엔드 통합 엔터프라이즈 아키텍처 다이어그램
 ![01_unified_enterprise_architecture_diagram](visualization/01_unified_enterprise_architecture_diagram.png)
