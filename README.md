@@ -1,7 +1,7 @@
 # 🏛️ SAP P2P Forecast System & Prescriptive AI Chatbot
 > **DGX Spark GPU 가속 기반 SAP Purchase-to-Pay(P2P) 프로세스 마이닝, ML 스태킹 예측, XAI 원인 분석, 처방형 리스크 시뮬레이션 및 SOP 컴플라이언스 감사 종합 에이전트 시스템**
 
-![SAP P2P Enterprise Architecture Banner](visualization/01_unified_enterprise_architecture_diagram.png)
+![SAP P2P Enterprise Architecture Banner](visualization/images/01_unified_enterprise_architecture_diagram.png)
 
 ---
 
@@ -39,7 +39,7 @@
 ## 📊 3. 시각화 자료 정밀 분석 및 세부 설명 (Detailed Visual Asset Walkthrough)
 
 ### 🖼️ [Asset 01] 엔드투엔드 통합 엔터프라이즈 아키텍처 다이어그램
-![Asset 01 Architecture Diagram](visualization/01_unified_enterprise_architecture_diagram.png)
+![Asset 01 Architecture Diagram](visualization/images/01_unified_enterprise_architecture_diagram.png)
 
 #### 📝 심층 분석 및 세부 설명
 * **설계 목적**: SAP ERP 데이터 수집부터 최종 ML 예측 및 LLM 대화형 처방까지 전체 엔터프라이즈 AI 시스템 파이프라인을 시각화
@@ -53,7 +53,7 @@
 ---
 
 ### 🖼️ [Asset 02] SAP P2P ERD 엔티티-관계 스키마 다이어그램
-![Asset 02 ERD Schema](visualization/02_sap_p2p_erd_entity_relationship_schema.png)
+![Asset 02 ERD Schema](visualization/images/02_sap_p2p_erd_entity_relationship_schema.png)
 
 #### 📝 심층 분석 및 세부 설명
 * **설계 목적**: SAP R/3 및 S/4HANA ERP 환경에서 P2P 공정 처리에 사용되는 핵심 RDBMS 테이블 간 PK-FK 참조 구조 명시
@@ -67,7 +67,7 @@
 ---
 
 ### 🖼️ [Asset 03] SHAP 피처 기여도 분석 & DFG 병목 구간 차트
-![Asset 03 SHAP & DFG Chart](visualization/03_shap_feature_attribution_and_dfg_bottleneck_chart.png)
+![Asset 03 SHAP & DFG Chart](visualization/images/03_shap_feature_attribution_and_dfg_bottleneck_chart.png)
 
 #### 📝 심층 분석 및 세부 설명
 * **좌측 차트 (SHAP Feature Importance Attribution)**:
@@ -82,7 +82,7 @@
 ---
 
 ### 🖼️ [Asset 04] 5대 오픈소스 LLM 300회 쿼리 최종 리더보드 표
-![Asset 04 LLM Leaderboard Table](visualization/04_llm_5model_final_leaderboard_table.png)
+![Asset 04 LLM Leaderboard Table](visualization/images/04_llm_5model_final_leaderboard_table.png)
 
 #### 📝 심층 분석 및 세부 설명
 * **평가 방법론**: SAP P2P 실무 현장 질의 300건을 구성하여 5대 최신 오픈소스 LLM을 동일 조건에서 정량/정성 벤치마크 평가 진행.
@@ -101,7 +101,7 @@
 ---
 
 ### 🖼️ [Asset 05] 5대 LLM 다차원 성능 레이더 차트 비교
-![Asset 05 LLM Radar Chart](visualization/05_llm_5model_radar_chart_comparison.png)
+![Asset 05 LLM Radar Chart](visualization/images/05_llm_5model_radar_chart_comparison.png)
 
 #### 📝 심층 분석 및 세부 설명
 * **5개 핵심 평가 축 (Evaluation Axes)**:
@@ -115,7 +115,7 @@
 ---
 
 ### 🖼️ [Asset 06] 3대 처방 모듈 핵심 성능 요약표
-![Asset 06 Prescriptive Benchmark Table](visualization/06_3module_prescriptive_benchmark_summary_table.png)
+![Asset 06 Prescriptive Benchmark Table](visualization/images/06_3module_prescriptive_benchmark_summary_table.png)
 
 #### 📝 심층 분석 및 세부 설명
 * **Module 1 (XAI & Bottleneck Tracking)**:
@@ -129,7 +129,7 @@
 ---
 
 ### 🖼️ [Asset 07] 3대 처방 모듈 정량 성능 차트
-![Asset 07 Prescriptive Benchmark Charts](visualization/07_3module_prescriptive_benchmark_charts.png)
+![Asset 07 Prescriptive Benchmark Charts](visualization/images/07_3module_prescriptive_benchmark_charts.png)
 
 #### 📝 심층 분석 및 세부 설명
 * **좌측 그래프 (Risk Reduction Delta Bar Chart)**:
@@ -140,7 +140,7 @@
 ---
 
 ### 🖼️ [Asset 08] 경영진 보고용 실증 감사 검증 종합표
-![Asset 08 Executive Empirical Audit Table](visualization/08_executive_empirical_audit_verification_table.png)
+![Asset 08 Executive Empirical Audit Table](visualization/images/08_executive_empirical_audit_verification_table.png)
 
 #### 📝 심층 분석 및 세부 설명
 * **경영진(C-Level) 보고용 4대 실증 감사 지표 요약**:
@@ -178,7 +178,9 @@
 │
 └── 📁 5. visualization/                           # 📓 마스터 주피터 노트북 & PNG 에셋 9종
     ├── system_performance_visualization.ipynb      #   - 마스터 통합 시각화 노트북
-    └── 01_unified_enterprise_architecture_diagram.png ~ 08_executive_empirical_audit_verification_table.png
+    └── images/                                     #   - 이미지 자산 폴더
+        ├── 01_unified_enterprise_architecture_diagram.png
+        └── ...
 ```
 
 ---
