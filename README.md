@@ -1,157 +1,153 @@
 # 🏛️ SAP P2P Forecast System & Prescriptive AI Chatbot
-> **DGX Spark GPU 가속 기반 SAP Purchase-to-Pay(P2P) 프로세스 마이닝, ML 스태킹 예측, XAI 원인 분석, 처방형 리스크 시뮬레이션 및 SOP 컴플라이언스 감사 종합 에이전트 시스템**
 
-![SAP P2P Enterprise Architecture Banner](visualization/images/01_unified_enterprise_architecture_diagram.png)
+> DGX Spark GPU 가속 기반 SAP Purchase-to-Pay(P2P) 프로세스 마이닝, ML 스태킹 예측, XAI 원인 분석, 처방형 리스크 시뮬레이션 및 SOP 컴플라이언스 감사 종합 에이전트 시스템
 
----
-
-## 📌 1. 프로젝트 개요 (Project Overview)
-
-본 프로젝트는 SAP ERP 엔터프라이즈 환경의 **Purchase-to-Pay (P2P)** 구매·조달·재무 전 라이프사이클(구매요청 PR ➔ 구매발주 PO ➔ 물품수령 GR ➔ 송장처리 IV ➔ 매입채무 AP)에서 발생하는 **239,620건의 실증 이벤트 로그**를 분석하여, 납기 지연 및 조달 리스크를 사전 예측하고 최적의 처방(Prescriptive Recommendation)을 제공하는 **엔드투엔드 AI 에이전트 대시보드 시스템**입니다.
-
-### 🌟 핵심 주요 성과 (Key Breakthroughs)
-- **ML 스태킹 앙상블 성능**: 15개 ML 베이스 모델 및 50x50 그리드서치 탐색을 통해 **F1-Score 0.8802**, **Accuracy 92.53%** 달성
-- **DGX Spark GPU 추론 가속**: Ollama 기반 `qwen3.6:35b` 로컬 LLM을 튜닝하여 **74.50 TPS (Tokens Per Second)** 초고속 추론 속도 확보
-- **처방형 3대 AI 엔진**:
-  - **Module 1 (XAI & DFG 병목 탐지)**: SHAP 기반 기여도 분석(정확도 **96.78%**) 및 공정 지연 구간 자동 식별
-  - **Module 2 (카운터팩추얼 리스크 시뮬레이션)**: What-If 조건부 가상 대안 시뮬레이션을 통한 **지연 리스크 67.58% 감축**
-  - **Module 3 (SOP 컴플라이언스 감사)**: SAP 표준 규정(SOP-SEC-14 등) 위반 건에 대한 **98.27% 감사 적발 리콜률** 기록
+<p align="center">
+  <img src="visualization/images/01_unified_enterprise_architecture_diagram.png" alt="SAP P2P Enterprise Architecture" width="95%"/>
+</p>
 
 ---
 
-## 🛠️ 2. 핵심 적용 기술 및 주요 용어 (Core Applied Technologies)
+## 📌 1. 프로젝트 개요
 
-1. **SAP P2P Process Mining (프로세스 마이닝)**:
-   - SAP ERP MM/FI 모듈의 5개 핵심 테이블(`EBAN`, `EKKO/EKPO`, `MKPF/MSEG`, `RBKP/RSEG`, `BSAK`) 간 1:N / N:M 이벤트를 추적하여 **Directly-Follows Graph (DFG)** 공정 흐름을 시각화합니다.
-2. **Meta_LightGBM 15-Model Stacking Ensemble**:
-   - Random Forest, Gradient Boosting, Extra Trees 등 15개 머신러닝 알고리즘의 예측 확률값을 Meta-Learner(LightGBM)로 통합 결합하여 예측 편향과 분산을 최적화한 ML 스태킹 기법입니다.
-3. **XAI SHAP (SHapley Additive exPlanations) Feature Attribution**:
-   - 게임 이론 기반 협력 게임 가치를 활용하여 복잡한 머신러닝 모델의 개별 피처(예: `lead_time_material`)가 지연 예측에 미친 양/음의 수치적 영향력을 투명하게 해명합니다.
-4. **Counterfactual Risk Reduction Delta (Δ) Simulation**:
-   - "만약 공급업체를 Vendor Z로 변경하거나 발주 수량을 15% 조정한다면 지연 리스크가 얼마나 감소하는가?"를 가상 역사실(Counterfactual) 기법으로 탐색하여 리스크 감소율 Delta를 계산합니다.
-5. **SOP (Standard Operating Procedure) Compliance Audit Recall**:
-   - 기업 내부 SAP 구매 승인 규정 및 전자결재 전결 기준 위반 사례를 자동 감지하고 수사/감사팀이 즉시 추적할 수 있도록 돕는 감사 리콜 엔진입니다.
-6. **DGX Spark GPU Accelerated Local LLM (Ollama Router)**:
-   - 외부 클라우드 API 유출 없이 기업 보안을 유지하며 GPU 오프로드 레벨 `num_gpu 99` 설정으로 `qwen3.6:35b` 프레스크립티브 AI 에이전트를 실시간 구동합니다.
+본 프로젝트는 SAP ERP 엔터프라이즈 환경의 **Purchase-to-Pay(P2P)** 구매·조달·재무 전 라이프사이클에서 발생하는 **239,620건의 실증 이벤트 로그**를 분석하여, 납기 지연 및 조달 리스크를 사전 예측하고 최적의 처방을 제공하는 **엔드투엔드 AI 에이전트 대시보드 시스템**입니다.
+
+| 항목 | 성과 |
+|------|------|
+| ML 스태킹 앙상블 | F1-Score **0.8802** · Accuracy **92.53%** |
+| GPU 추론 속도 | Ollama `qwen3.6:35b` **74.50 TPS** |
+| XAI 원인 분석 정확도 | Module 1 SHAP **96.78%** |
+| 리스크 감축 | Module 2 What-If Δ **-67.58%** |
+| SOP 감사 리콜률 | Module 3 **98.27%** |
 
 ---
 
-## 📊 3. 시각화 자료 정밀 분석 및 세부 설명 (Detailed Visual Asset Walkthrough)
+## 🛠️ 2. 핵심 적용 기술
 
-### 🖼️ [Asset 01] 엔드투엔드 통합 엔터프라이즈 아키텍처 다이어그램
-![Asset 01 Architecture Diagram](visualization/images/01_unified_enterprise_architecture_diagram.png)
-
-#### 📝 심층 분석 및 세부 설명
-* **설계 목적**: SAP ERP 데이터 수집부터 최종 ML 예측 및 LLM 대화형 처방까지 전체 엔터프라이즈 AI 시스템 파이프라인을 시각화
-* **5대 서브시스템 아키텍처 분석**:
-  1. **`1. SAP ERP SOURCE`**: SAP MM 모듈(구매요청 PR, 구매발주 PO) 및 FI/CO 모듈(자재입고 GR, 송장처리 AP)의 트랜잭션 데이터 원천 수집.
-  2. **`2. DATA ETL PIPELINE`**: 239,620건의 Raw 이벤트 로그를 실시간 배치 인제스천하고, 시계열 이동평균(MA), 자재 리드타임, 공급사 과거 지연율 등 **73개 핵심 공정 피처**를 자동으로 추출 및 생성.
-  3. **`3. MACBOOK & STREAMLIT CLIENT TIER`**: 사용자가 웹 브라우저로 접속하는 Remote Web Client와 맥북 로컬 호스트(`app.py`) 간 양방향 통신을 수립하며, DGX Spark 서버와 SSH/REST 암호화 터널링 통신 수행.
-  4. **`4. DGX SPARK GPU & 3 ENGINES`**: Ollama 추론 루터를 통해 `qwen3.6:35b` LLM이 초당 74.50 토큰(TPS)으로 구동되며, 3대 처방 AI 모듈(XAI 원인분석, 리스크 시뮬레이터, SOP 감사엔진)과 양방향 툴 콜링(Tool Calling) 수행.
-  5. **`5. ML ENGINE`**: 15개 알고리즘이 결합된 Meta_LightGBM 스태킹 ML 엔진이 F1-Score **0.8802**, Accuracy **92.53%**의 고성능 실시간 지연 예측 수치를 공급.
+| 기술 | 설명 |
+|------|------|
+| **SAP P2P Process Mining** | `EBAN` → `EKKO/EKPO` → `MKPF/MSEG` → `RBKP/RSEG` → `BSAK` 5개 테이블 간 DFG 공정 흐름 시각화 |
+| **Meta_LightGBM Stacking** | 15개 ML 알고리즘 예측 확률값을 Meta-Learner(LightGBM)로 통합 |
+| **XAI SHAP Attribution** | 게임 이론 기반 개별 피처의 지연 예측 기여도를 수치적으로 해명 |
+| **Counterfactual Δ Simulation** | 가상 역사실(What-If) 기법으로 조건 변경 시 리스크 감소율 계산 |
+| **SOP Compliance Audit** | SAP 구매 승인 규정 위반 사례 자동 감지 감사 엔진 |
+| **DGX Spark GPU LLM** | `num_gpu 99` 설정, 외부 API 없이 `qwen3.6:35b` 로컬 실시간 구동 |
 
 ---
 
-### 🖼️ [Asset 02] SAP P2P ERD 엔티티-관계 스키마 다이어그램
-![Asset 02 ERD Schema](visualization/images/02_sap_p2p_erd_entity_relationship_schema.png)
+## 📊 3. 시각화 자료 및 분석
 
-#### 📝 심층 분석 및 세부 설명
-* **설계 목적**: SAP R/3 및 S/4HANA ERP 환경에서 P2P 공정 처리에 사용되는 핵심 RDBMS 테이블 간 PK-FK 참조 구조 명시
-* **5개 핵심 관계형 테이블 정밀 구성**:
-  1. **`EBAN` (Purchase Requisition)**: 구매요청서 번호(`BANFN`), 품목(`BNFPO`), 자재코드(`MATNR`), 요청수량(`MENGE`), 요청자(`ERNAM`).
-  2. **`EKKO / EKPO` (Purchase Order Header & Item)**: 구매발주서 헤더/품목(`EBELN`/`EBELP`), 공급업체 코드(`LIFNR`), 발주일자(`BEDAT`), 단가(`NETPR`).
-  3. **`MKPF / MSEG` (Goods Receipt Header & Document)**: 자재입고 전표(`MBLNR`), 입고수량(`MENGE`), 전기일자(`BUDAT`), 입고 담당자(`USNAM`).
-  4. **`RBKP / RSEG` (Invoice Receipt Header & Item)**: 송장 수령전표(`BELNR`), 송장금액(`WRBTR`), 세액(`WMWST`), 증빙일자(`BLDAT`).
-  5. **`BSAK` (Accounts Payable Accounting Document)**: 반제 완료 매입채무(`BELNR`), 지급일자(`AUGDT`), 반제금액(`DMBTR`), 지급수단(`ZLSCH`).
+### [Asset 01] 통합 엔터프라이즈 아키텍처 다이어그램
 
----
+<p align="center">
+  <img src="visualization/images/01_unified_enterprise_architecture_diagram.png" alt="Architecture Diagram" width="95%"/>
+</p>
 
-### 🖼️ [Asset 03] SHAP 피처 기여도 분석 & DFG 병목 구간 차트
-![Asset 03 SHAP & DFG Chart](visualization/images/03_shap_feature_attribution_and_dfg_bottleneck_chart.png)
+SAP ERP 데이터 수집부터 ML 예측, LLM 대화형 처방까지 전체 파이프라인을 시각화합니다.
 
-#### 📝 심층 분석 및 세부 설명
-* **좌측 차트 (SHAP Feature Importance Attribution)**:
-  * 머신러닝 블랙박스 모델의 예측 결과를 게임 이론 SHAP Value로 해명.
-  * **1위 피처**: `lead_time_material` (자재 조달 리드타임) ➔ **+0.482 SHAP 수치 기여도**를 기록하여 지연 발생의 가장 핵심적 영향 요인으로 판명.
-  * **2위 피처**: `vendor_past_delay_rate` (공급업체 과거 지연 비율) ➔ **+0.315 SHAP 수치 기여도**.
-  * **3위 피처**: `po_item_quantity` (발주 물량 규모) ➔ **+0.198 SHAP 수치 기여도**.
-* **우측 차트 (DFG Process Mining Stage Bottleneck Analysis)**:
-  * Directly-Follows Graph 분석 기법을 적용하여 공정 전반의 평균 소요 기간을 추적.
-  * **최악의 병목 구간**: **`PO Creation ➔ Goods Receipt` (발주서 작성 후 물품 수령까지 평균 8.4일 소요)** ➔ 전체 공정 지연의 68% 이상이 이 구간에서 발생함이 수치적으로 입증됨.
+- **Layer 1–2**: SAP ERP SOURCE → DATA ETL PIPELINE (239,620건 이벤트 로그, 73개 피처 추출)
+- **Layer 3**: MacBook Streamlit Client ↔ DGX Spark SSH/REST 터널링
+- **Layer 4**: Ollama Router → `qwen3.6:35b` LLM (74.50 TPS) + 3대 처방 모듈 Tool Calling
+- **Layer 5**: Meta_LightGBM 15-Model Stacking (F1 0.8802, Acc 92.53%)
 
 ---
 
-### 🖼️ [Asset 04] 5대 오픈소스 LLM 300회 쿼리 최종 리더보드 표
-![Asset 04 LLM Leaderboard Table](visualization/images/04_llm_5model_final_leaderboard_table.png)
+### [Asset 02] SAP P2P ERD 엔티티-관계 스키마
 
-#### 📝 심층 분석 및 세부 설명
-* **평가 방법론**: SAP P2P 실무 현장 질의 300건을 구성하여 5대 최신 오픈소스 LLM을 동일 조건에서 정량/정성 벤치마크 평가 진행.
-* **5대 모델 최종 순위 및 수치 데이터**:
-  1. **🏆 1위: `Qwen 3.6:35b` (종합 점수 94.8점)**
-     * 도메인 정확도: **96.5%** | 환각 발생률: **1.2%** | 추론 속도: **74.50 TPS** | 한국어 가독성: **94.0점**
-  2. **🥈 2위: `Mixtral 8x7B` (종합 점수 91.2점)**
-     * 도메인 정확도: **92.1%** | 환각 발생률: **2.8%** | 추론 속도: **42.10 TPS** | 한국어 가독성: **88.5점**
-  3. **🥉 3위: `Llama 3 8B` (종합 점수 88.5점)**
-     * 도메인 정확도: **89.4%** | 환각 발생률: **3.5%** | 추론 속도: **38.50 TPS** | 한국어 가독성: **86.0점**
-  4. **4위: `Gemma 2 9B` (종합 점수 86.1점)**
-     * 도메인 정확도: **85.8%** | 환각 발생률: **4.1%** | 추론 속도: **35.20 TPS** | 한국어 가독성: **84.5점**
-  5. **5위: `Aya 23 8B` (종합 점수 83.4점)**
-     * 도메인 정확도: **82.3%** | 환각 발생률: **5.2%** | 추론 속도: **31.80 TPS** | 한국어 가독성: **82.0점**
+<p align="center">
+  <img src="visualization/images/02_sap_p2p_erd_entity_relationship_schema.png" alt="ERD Schema" width="95%"/>
+</p>
 
----
+SAP R/3 및 S/4HANA ERP의 P2P 핵심 RDBMS 테이블 간 PK-FK 참조 구조입니다.
 
-### 🖼️ [Asset 05] 5대 LLM 다차원 성능 레이더 차트 비교
-![Asset 05 LLM Radar Chart](visualization/images/05_llm_5model_radar_chart_comparison.png)
-
-#### 📝 심층 분석 및 세부 설명
-* **5개 핵심 평가 축 (Evaluation Axes)**:
-  1. `Domain Accuracy` (SAP 조달/재무 도메인 지식 정확도)
-  2. `Prescriptive Trust` (처방형 대안 추천의 신뢰성)
-  3. `Hallucination-free` (환각 및 허위 정보 배제율)
-  4. `Korean Naturalness` (한국어 전문 용어 표현 및 자연스러움)
-  5. `Throughput Speed` (GPU 기반 토큰 생성 속도 TPS)
-* **시각적 분석**: `Qwen 3.6:35b`가 5개 평가 축 모두에서 가장 넓고 균형 잡힌 다각형 영역을 형성하며, 특히 추론 속도(74.50 TPS)와 도메인 정확도(96.5%) 영역에서 독보적인 성능 우위를 증명함.
+| 테이블 | 역할 | 주요 필드 |
+|--------|------|-----------|
+| `EBAN` | 구매요청(PR) | `BANFN`, `MATNR`, `MENGE` |
+| `EKKO/EKPO` | 구매발주(PO) | `EBELN`, `LIFNR`, `NETPR` |
+| `MKPF/MSEG` | 자재입고(GR) | `MBLNR`, `BUDAT` |
+| `RBKP/RSEG` | 송장수령(IV) | `BELNR`, `WRBTR` |
+| `BSAK` | 매입채무(AP) | `AUGDT`, `DMBTR` |
 
 ---
 
-### 🖼️ [Asset 06] 3대 처방 모듈 핵심 성능 요약표
-![Asset 06 Prescriptive Benchmark Table](visualization/images/06_3module_prescriptive_benchmark_summary_table.png)
+### [Asset 03] SHAP 피처 기여도 & DFG 병목 구간
 
-#### 📝 심층 분석 및 세부 설명
-* **Module 1 (XAI & Bottleneck Tracking)**:
-  * SHAP XAI 원인 설명 정확도: **96.78%**
-  * DFG 공정 병목 구간 탐지 정밀도(Precision): **97.40%**
-* **Module 2 (Counterfactual Risk Simulator)**:
-  * 가상 대안 시뮬레이션을 통한 지연 리스크 감소율 Delta (Δ): **-67.58%** (공급사를 Vendor Z로 교체 시 지연 발생 위험이 84.2%에서 16.62%로 급감)
-* **Module 3 (SOP Compliance Audit Engine)**:
-  * SAP 전자결재 전결 규정(SOP-SEC-14 등) 위반 건 적발 감사 리콜률(Recall): **98.27%**
+<p align="center">
+  <img src="visualization/images/03_shap_feature_attribution_and_dfg_bottleneck_chart.png" alt="SHAP & DFG" width="95%"/>
+</p>
+
+- **좌측 (SHAP)**: 1위 `lead_time_material` (+0.482) · 2위 `vendor_past_delay_rate` (+0.315) · 3위 `po_item_quantity` (+0.198)
+- **우측 (DFG)**: 최악 병목 `PO Creation → Goods Receipt` 평균 **8.4일** (전체 지연의 68%)
 
 ---
 
-### 🖼️ [Asset 07] 3대 처방 모듈 정량 성능 차트
-![Asset 07 Prescriptive Benchmark Charts](visualization/images/07_3module_prescriptive_benchmark_charts.png)
+### [Asset 04] 5대 LLM 300회 쿼리 리더보드
 
-#### 📝 심층 분석 및 세부 설명
-* **좌측 그래프 (Risk Reduction Delta Bar Chart)**:
-  * 기존 조달 시나리오의 지연 위험도(84.2%) 대비 Module 2 처방 시뮬레이션 적용 후 위험도(16.62%)의 획기적 하락(-67.58%p) 시각화.
-* **우측 그래프 (Audit Recall Gaussian Distribution)**:
-  * 총 1,200건의 SOP 규정 위반 무작위 테스트 케이스 중 1,179건을 수사/감사팀이 즉시 추적 가능하도록 오차 없이 적발해낸 98.27% 리콜 정밀도를 가우시안 곡선으로 검증.
+<p align="center">
+  <img src="visualization/images/04_llm_5model_final_leaderboard_table.png" alt="LLM Leaderboard" width="95%"/>
+</p>
 
----
-
-### 🖼️ [Asset 08] 경영진 보고용 실증 감사 검증 종합표
-![Asset 08 Executive Audit Table](visualization/images/08_executive_empirical_audit_verification_table.png)
-
-#### 📝 심층 분석 및 세부 설명
-* **경영진(C-Level) 보고용 4대 실증 감사 지표 요약**:
-  1. **Data Scale**: 239,620건의 이벤트 로그 데이터셋, 73개 전처리 피처
-  2. **ML Stacking Accuracy**: F1-Score **0.8802**, Accuracy **92.53%** (Combo 23 Meta_LightGBM)
-  3. **GPU Inference Speed**: DGX Spark `qwen3.6:35b` 기준 **74.50 TPS**
-  4. **Business ROI**: 납기 지연 리스크 **67.58% 절감**, SOP 규정 위반 적발 리콜률 **98.27%**
+| 순위 | 모델 | 종합 | 도메인 정확도 | 환각률 | TPS | 한국어 |
+|------|------|------|-------------|--------|-----|--------|
+| 🏆 1 | Qwen 3.6:35b | 94.8 | 96.5% | 1.2% | 74.50 | 94.0 |
+| 🥈 2 | Mixtral 8x7B | 91.2 | 92.1% | 2.8% | 42.10 | 88.5 |
+| 🥉 3 | Llama 3 8B | 88.5 | 89.4% | 3.5% | 38.50 | 86.0 |
+| 4 | Gemma 2 9B | 86.1 | 85.8% | 4.1% | 35.20 | 84.5 |
+| 5 | Aya 23 8B | 83.4 | 82.3% | 5.2% | 31.80 | 82.0 |
 
 ---
 
-## 📂 4. 디렉터리 구조 (Directory Architecture)
+### [Asset 05] 5대 LLM 레이더 차트
+
+<p align="center">
+  <img src="visualization/images/05_llm_5model_radar_chart_comparison.png" alt="LLM Radar Chart" width="95%"/>
+</p>
+
+5개 평가 축(Domain Accuracy · Prescriptive Trust · Hallucination-free · Korean Naturalness · Throughput Speed)에서 `Qwen 3.6:35b`가 가장 균형 잡힌 최대 다각형 영역을 형성합니다.
+
+---
+
+### [Asset 06] 3대 처방 모듈 성능 요약
+
+<p align="center">
+  <img src="visualization/images/06_3module_prescriptive_benchmark_summary_table.png" alt="Module Summary" width="95%"/>
+</p>
+
+| 모듈 | 지표 | 수치 |
+|------|------|------|
+| Module 1 (XAI & DFG) | SHAP 설명 정확도 / DFG 탐지 정밀도 | 96.78% / 97.40% |
+| Module 2 (Risk Sim) | 리스크 감소 Δ | 84.2% → 16.62% (**-67.58%**) |
+| Module 3 (SOP Audit) | 감사 리콜률 | **98.27%** (1,200건 중 1,179건 적발) |
+
+---
+
+### [Asset 07] 3대 처방 모듈 정량 차트
+
+<p align="center">
+  <img src="visualization/images/07_3module_prescriptive_benchmark_charts.png" alt="Module Charts" width="95%"/>
+</p>
+
+- **좌측**: 위험도 84.2% → 16.62% 하락 바 차트
+- **우측**: 98.27% 리콜 정밀도 가우시안 분포 검증
+
+---
+
+### [Asset 08] 경영진 보고용 실증 감사 검증표
+
+<p align="center">
+  <img src="visualization/images/08_executive_empirical_audit_verification_table.png" alt="Executive Audit Table" width="95%"/>
+</p>
+
+| 지표 | 수치 |
+|------|------|
+| Data Scale | 239,620건 이벤트 로그 · 73개 피처 |
+| ML Accuracy | F1 0.8802 · Acc 92.53% |
+| GPU Speed | 74.50 TPS |
+| Business ROI | 리스크 67.58% 절감 · 감사 리콜 98.27% |
+
+---
+
+## 📂 4. 디렉터리 구조
 
 ```
 sap/
@@ -160,79 +156,54 @@ sap/
 ├── requirements.txt
 ├── run_app.sh
 │
-├── app/                         # 🌐 Streamlit 웹 대시보드 UI
+├── app/                         # Streamlit 웹 대시보드
 │   ├── app.py
 │   └── dashboard.py
 │
-├── pipelines/                   # ⚙️ 데이터 파이프라인 & ML 스태킹
+├── pipelines/                   # 데이터 파이프라인 & ML
 │   ├── data_pipeline/
 │   ├── ensemble_search/
 │   └── scripts/
 │
-├── llm_engine/                  # 💬 로컬 LLM 챗봇 & 3대 처방 엔진
+├── llm_engine/                  # LLM 챗봇 & 3대 처방 엔진
 │   ├── chatbot/
 │   └── llm_evaluation/
 │
-├── models_config/               # 📄 Ollama Modelfile & 환경 설정
+├── models_config/               # Ollama Modelfile & 설정
 │   └── models/modelfiles/
 │
-└── visualization/               # 📓 시각화 노트북 & 이미지 에셋
+└── visualization/               # 시각화 노트북 & 이미지
     ├── system_performance_visualization.ipynb
     ├── streamlit_prescriptive_ai_demo.mov
     └── images/
-        ├── 01_unified_enterprise_architecture_diagram.png
-        ├── 02_sap_p2p_erd_entity_relationship_schema.png
-        ├── 03_shap_feature_attribution_and_dfg_bottleneck_chart.png
-        ├── 04_llm_5model_final_leaderboard_table.png
-        ├── 05_llm_5model_radar_chart_comparison.png
-        ├── 06_3module_prescriptive_benchmark_summary_table.png
-        ├── 07_3module_prescriptive_benchmark_charts.png
-        └── 08_executive_empirical_audit_verification_table.png
+        └── 01~08 PNG 에셋
 ```
 
 ---
 
-## ⚡ 5. 빠른 시작 및 실행 가이드 (Quick Start Guide)
+## ⚡ 5. 빠른 시작
 
-### 1) 스트림릿 대시보드 실행
 ```bash
-cd /Users/gyuminkang/Desktop/sap
-./run_app.sh
-```
-브라우저에서 `http://localhost:8501`로 접속합니다.
+# 1) 스트림릿 대시보드
+cd /Users/gyuminkang/Desktop/sap && ./run_app.sh
+# → http://localhost:8501
 
-### 2) DGX Spark GPU 서버 SSH 터널링 (원격 접속 시)
-```bash
+# 2) DGX Spark SSH 터널링
 ssh -N -L 11434:localhost:11434 user@dgx-spark-server-ip
-```
 
-### 3) 주피터 노트북 시각화 열람
-```bash
-cd /Users/gyuminkang/Desktop/sap/visualization
-jupyter notebook system_performance_visualization.ipynb
+# 3) 주피터 노트북
+cd visualization && jupyter notebook system_performance_visualization.ipynb
 ```
 
 ---
 
-## 📚 6. 참고 문헌 및 학술 인용 (References & Citations)
+## 📚 6. 참고 문헌
 
-1. **Process Mining & Event Logs**:
-   - van der Aalst, W. M. P. (2016). *Process Mining: Data Science in Action*. Springer. [DOI: 10.1007/978-3-662-49851-4]
-   - IEEE Task Force on Process Mining. (2010). *eXtensible Event Stream (XES) Standard Definition*.
-
-2. **Explainable AI (XAI) & SHAP**:
-   - Lundberg, S. M., & Lee, S.-I. (2017). A Unified Approach to Interpreting Model Predictions. *NeurIPS 2017*, 30, 4765–4774.
-
-3. **Machine Learning Stacking Ensemble**:
-   - Ke, G., et al. (2017). LightGBM: A Highly Efficient Gradient Boosting Decision Tree. *NeurIPS 2017*, 30, 3146–3154.
-   - Breiman, L. (1996). Stacked Regressions. *Machine Learning*, 24(1), 49–64.
-
-4. **Large Language Models & GPU Acceleration**:
-   - Yang, A., et al. (2024). Qwen2.5 Technical Report. *arXiv:2409.12186*.
-   - Ollama (2024). *High-Performance GPU Pipeline Offloading*. https://github.com/ollama/ollama
-
-5. **SAP ERP Architecture**:
-   - SAP SE. (2023). *SAP S/4HANA MM and FI Integration Guide*. SAP Documentation.
+1. van der Aalst, W. M. P. (2016). *Process Mining: Data Science in Action*. Springer.
+2. Lundberg, S. M. & Lee, S.-I. (2017). A Unified Approach to Interpreting Model Predictions. *NeurIPS*.
+3. Ke, G., et al. (2017). LightGBM. *NeurIPS*.
+4. Yang, A., et al. (2024). Qwen2.5 Technical Report. *arXiv:2409.12186*.
+5. SAP SE (2023). *S/4HANA MM and FI Integration Guide*.
 
 
 
