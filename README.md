@@ -2,13 +2,6 @@
   <h1>🚀 ISO 9001 Expert Chatbot</h1>
   <p><em>Powered by DeepSeek, FastAPI, and ChromaDB</em></p>
 
-  <!-- Official Archive & License Badges -->
-  <p>
-    <a href="https://doi.org/10.5281/zenodo.22632597"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.22632597.svg" alt="DOI"></a>
-    <img src="https://img.shields.io/badge/License-All_Rights_Reserved-crimson.svg" alt="License">
-    <img src="https://img.shields.io/badge/Status-Verified_PoC-blue.svg" alt="Status">
-  </p>
-
   <!-- Tech Stack Badges -->
   <p>
     <img src="https://img.shields.io/badge/MacBook_Pro-M5-000000?logo=apple&logoColor=white" alt="MacBook Pro M5">
@@ -18,6 +11,13 @@
     <img src="https://img.shields.io/badge/Streamlit-FF4B4B?logo=streamlit&logoColor=white" alt="Streamlit">
     <img src="https://img.shields.io/badge/Chroma-DB-FF6F00" alt="Chroma DB">
     <img src="https://img.shields.io/badge/LLM-DeepSeek_v4-0d1117" alt="DeepSeek">
+  </p>
+
+    <!-- Official Archive & License Badges -->
+  <p>
+    <a href="https://doi.org/10.5281/zenodo.22632597"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.22632597.svg" alt="DOI"></a>
+    <img src="https://img.shields.io/badge/License-All_Rights_Reserved-crimson.svg" alt="License">
+    <img src="https://img.shields.io/badge/Status-Verified_PoC-blue.svg" alt="Status">
   </p>
 
   <p>
