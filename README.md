@@ -10,7 +10,7 @@
     <img src="https://img.shields.io/badge/FastAPI-005571?logo=fastapi" alt="FastAPI">
     <img src="https://img.shields.io/badge/Streamlit-FF4B4B?logo=streamlit&logoColor=white" alt="Streamlit">
     <img src="https://img.shields.io/badge/Chroma-DB-FF6F00" alt="Chroma DB">
-    <img src="https://img.shields.io/badge/LLM-DeepSeek_v4-0d1117" alt="DeepSeek">
+    <img src="https://img.shields.io/badge/LLM-DeepSeek-0d1117" alt="DeepSeek">
   </p>
   
   <p>
