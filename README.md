@@ -2,7 +2,14 @@
   <h1>🚀 ISO 9001 Expert Chatbot</h1>
   <p><em>Powered by DeepSeek, FastAPI, and ChromaDB</em></p>
 
-  <!-- Badges -->
+  <!-- Official Archive & License Badges -->
+  <p>
+    <a href="https://doi.org/10.5281/zenodo.22632597"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.22632597.svg" alt="DOI"></a>
+    <img src="https://img.shields.io/badge/License-All_Rights_Reserved-crimson.svg" alt="License">
+    <img src="https://img.shields.io/badge/Status-Verified_PoC-blue.svg" alt="Status">
+  </p>
+
+  <!-- Tech Stack Badges -->
   <p>
     <img src="https://img.shields.io/badge/MacBook_Pro-M5-000000?logo=apple&logoColor=white" alt="MacBook Pro M5">
     <img src="https://img.shields.io/badge/Server-DGX_Spark_128GB-76B900?logo=nvidia&logoColor=white" alt="DGX Spark 128GB">
@@ -16,9 +23,15 @@
   <p>
     <b>A production-level RAG (Retrieval-Augmented Generation) pipeline and enterprise AI chatbot benchmarking project, fully compliant with the ISO 9001:2015 standard.</b>
   </p>
+</div>
 
----
-> ⚠️ Copyright Notice Copyright (c) 2026 Kang Gyu Min. All rights reserved.
+> [!WARNING]
+> **[Intellectual Property & Authorized Evaluation Notice]**
+> - The source code, architecture, and associated assets in this repository are permanently archived with an official Digital Object Identifier (**DOI: [10.5281/zenodo.22632597](https://doi.org/10.5281/zenodo.22632597)**) via CERN/Zenodo.
+> - Access to this repository is granted **strictly for authorized review and technical evaluation purposes**.
+> - **Unauthorized copying, reverse engineering, redistribution, commercial utilization, derivative work creation, or appropriation of model weights** without explicit prior written consent from the author is strictly prohibited.
+> - **Copyright (c) 2026 Kang Gyu Min. All rights reserved.**
+
 ---
   
   <!-- Demo Video -->
