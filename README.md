@@ -12,8 +12,7 @@
     <img src="https://img.shields.io/badge/Chroma-DB-FF6F00" alt="Chroma DB">
     <img src="https://img.shields.io/badge/LLM-DeepSeek_v4-0d1117" alt="DeepSeek">
   </p>
-
-    <!-- Official Archive & License Badges -->
+  
   <p>
     <a href="https://doi.org/10.5281/zenodo.22632597"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.22632597.svg" alt="DOI"></a>
     <img src="https://img.shields.io/badge/License-All_Rights_Reserved-crimson.svg" alt="License">
